@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from heapq import merge
 import os
 from collections.abc import Iterable
 from typing import IO, Any, BinaryIO
@@ -589,4 +590,11 @@ def run_train_bpe(
                 representing that <token1> was merged with <token2>.
                 Merges are ordered by order of creation.
     """
-    raise NotImplementedError
+
+    from cs336_basics.BPETokenizer import train_BPE_tokenizer
+
+    vocab, merges = train_BPE_tokenizer(input_path, vocab_size, special_tokens) 
+
+    return vocab, merges
+
+    #raise NotImplementedError

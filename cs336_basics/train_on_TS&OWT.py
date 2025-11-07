@@ -10,7 +10,7 @@ def main():
     # 使用验证集作为debug dataset
     input_path = "data/TinyStoriesV2-GPT4-train.txt"  #data\owt_train.txt
     vocab_size = 10000  # 32000
-    special_tokens = ["<|endoftext|>"]
+    special_tokens = ["<|endoftext|>"]   #"\n"
     
     print(f"开始在验证集上训练 BPE tokenizer...")
     print(f"输入文件: {input_path}")
@@ -33,7 +33,7 @@ def main():
     with open("res/TS/vocab.pkl", "wb") as f:
         pickle.dump(vocab, f)
     
-    with open("res/TS/merges.pkl", "wb") as f:
+    with open("res/res-TS/merges.pkl", "wb") as f:
         pickle.dump(merges, f)
     
     print(f"\n已保存 vocab.pkl 和 merges.pkl")

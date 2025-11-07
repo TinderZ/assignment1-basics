@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import autoroot
 from heapq import merge
 import os
 from collections.abc import Iterable

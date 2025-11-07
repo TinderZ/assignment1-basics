@@ -8,8 +8,8 @@ import json
 
 def main():
     # 使用验证集作为debug dataset
-    input_path = "data/TinyStoriesV2-GPT4-valid.txt"
-    vocab_size = 4096
+    input_path = "data/TinyStoriesV2-GPT4-train.txt"  #data\owt_train.txt
+    vocab_size = 10000  # 32000
     special_tokens = ["<|endoftext|>"]
     
     print(f"开始在验证集上训练 BPE tokenizer...")
@@ -30,10 +30,10 @@ def main():
     print(f"合并次数: {len(merges)}")
     
     # 序列化结果
-    with open("vocab.pkl", "wb") as f:
+    with open("res/TS/vocab.pkl", "wb") as f:
         pickle.dump(vocab, f)
     
-    with open("merges.pkl", "wb") as f:
+    with open("res/TS/merges.pkl", "wb") as f:
         pickle.dump(merges, f)
     
     print(f"\n已保存 vocab.pkl 和 merges.pkl")
@@ -53,7 +53,7 @@ def main():
     stats.print_stats(30)
     
     # 保存性能分析结果到文件
-    with open("profile_stats.txt", "w", encoding="utf-8") as f:
+    with open("res/TS/profile_stats.txt", "w", encoding="utf-8") as f:
         stats = pstats.Stats(profiler, stream=f)
         f.write("="*80 + "\n")
         f.write("按累计时间排序:\n")
